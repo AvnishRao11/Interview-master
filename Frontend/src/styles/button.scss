@@ -1,0 +1,23 @@
+.button{
+    border:none;
+    outline:none;
+    padding:0.5rem 1rem;
+    border-radius:0.6rem;
+    cursor:pointer;
+
+
+    transition:all 0.12s ease-in-out;
+
+    &.primary-button{
+        background-color:#cd170aef;
+        color:whitesmoke;
+        border:none;
+        outline:none;
+        padding:0.5rem 1rem;
+        border-radius:0.5rem;
+       
+    }
+    &:active{
+        transform:scale(1.1);
+    }
+}
