@@ -19,10 +19,12 @@ app.use(morgan('dev'));
  * Requiring routes here 
  */
 import authRouter from "./routes/auth.routes.js";
+import interviewRouter from "./routes/interview.routes.js";
 
 /**
  * using  routes here 
  */
 app.use('/api/auth',authRouter);
+app.use('/api/interview',interviewRouter);
 
 export default app;
