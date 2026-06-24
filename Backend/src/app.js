@@ -5,12 +5,16 @@ import cors from "cors";
 
 const app = express();
 
+
+app.set("trust proxy", 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
     origin: ["http://localhost:5173",
-        "https://interview-master-mocha.vercel.app"
+        "https://interview-master-mocha.vercel.app",
+        "https://interview-master-git-master-avnishs-projects-aee706aa.vercel.app/",
+        "https://interview-master-iej2eh7pg-avnishs-projects-aee706aa.vercel.app/"
     ],
     credentials: true,
 }));
@@ -24,7 +28,6 @@ import authRouter from "./routes/auth.routes.js";
 import interviewRouter from "./routes/interview.routes.js";
 
 
-app.set("trust proxy", 1);
 /**
  * 
  * using  routes here 
