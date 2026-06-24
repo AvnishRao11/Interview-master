@@ -8,5 +8,8 @@ app.listen(port,()=>{
 })
 connectDB();
 
+app.get('/',(req,res)=>{
+    res.send("Server is running");
 
+})
 
