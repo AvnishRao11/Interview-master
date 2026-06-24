@@ -23,7 +23,10 @@ app.use(morgan('dev'));
 import authRouter from "./routes/auth.routes.js";
 import interviewRouter from "./routes/interview.routes.js";
 
+
+app.set("trust proxy", 1);
 /**
+ * 
  * using  routes here 
  */
 app.use('/api/auth', authRouter);

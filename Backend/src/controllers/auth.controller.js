@@ -77,7 +77,8 @@ export const register = async (req, res) => {
     })
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
+      secure: true,
       maxAge: 7 * 24 * 60 * 60 * 1000  // in milliseconds
     })
 
@@ -166,6 +167,7 @@ export const login = async (req, res) => {
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       sameSite: "none",
+      secure:true,
       maxAge: 7 * 24 * 60 * 60 * 1000 // in milliseconds 
     })
     return res.status(200).json({
@@ -231,7 +233,8 @@ export const refreshController = async (req, res) => {
       expiresIn: "7d"
     })
     res.cookie("refreshToken", newRefreshToken, {
-      sameSite: "strict",
+      sameSite: "none",
+      secure: true,
       httpOnly: true,
       maxAge: 7 * 24 * 60 * 60 * 1000
     })
@@ -277,7 +280,8 @@ export const logout = async (req, res) => {
     })
     res.clearCookie("refreshToken", {
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "none",
+      secure: true
     })
 
 
