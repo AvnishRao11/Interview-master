@@ -16,7 +16,6 @@ api.interceptors.request.use(
             config.headers.Authorization =
                 `Bearer ${token}`;
         }
-
         return config;
     },
     (error) => {
@@ -113,5 +112,7 @@ export async function getUser() {
         throw error;
     }
 }
+
+export default api;
 
 

@@ -23,11 +23,44 @@ export const generateInterviewReportController = async (req, res) => {
         technicalQuestions: interviewReportByAi.technicalQuestions,
         behavioralQuestions: interviewReportByAi.behavioralQuestions,
         skillGaps: interviewReportByAi.skillGaps,
-        preparationPlan: interviewReportByAi.preparationPlan
+        preparationPlan: interviewReportByAi.preparationPlan,
+        title:interviewReportByAi.title
     })
     return res.status(200).json({
         message: "Interview report generated successfully",
         interviewReport
     })
 
+}
+
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
+export const getInterviewReportByIdController=async(req,res)=>{
+    const {id}=req.params;
+    const interviewReport=await interviewReportModel.findOne({
+        _id:id,
+        user:req.user.id
+    })
+    if(!interviewReport){
+        return res.status(404).json({
+            message: "Interview report not found"
+        })
+    }
+    return res.status(200).json({
+        message: "Interview report retrieved successfully",
+        interviewReport
+    })
+}
+
+export const getAllInterviewReportsController=async(req,res)=>{
+    const interviewReports=await interviewReportModel.find({
+        user:req.user.id
+    }).sort({createdAt:-1}).select ("-resume -selfDescription -jobDescription -__v -tehcnicalQuestions -behavioralQuestions -skillGaps -preparationPlan");
+    return res.status(200).json({
+        message: "Interview reports retrieved successfully",
+        interviewReports
+    })
 }
