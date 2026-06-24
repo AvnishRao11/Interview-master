@@ -9,7 +9,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173",
+        "https://interview-master-mocha.vercel.app"
+    ],
     credentials: true,
 }));
 app.use(morgan('dev'));
@@ -24,7 +26,7 @@ import interviewRouter from "./routes/interview.routes.js";
 /**
  * using  routes here 
  */
-app.use('/api/auth',authRouter);
-app.use('/api/interview',interviewRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/interview', interviewRouter);
 
 export default app;
