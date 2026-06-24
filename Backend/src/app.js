@@ -12,9 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
     origin: ["http://localhost:5173",
-        "https://interview-master-mocha.vercel.app",
+        "https://interview-master-steel.vercel.app/",
         "https://interview-master-git-master-avnishs-projects-aee706aa.vercel.app/",
-        "https://interview-master-iej2eh7pg-avnishs-projects-aee706aa.vercel.app/"
+        "hhttps://interview-master-bacz7unib-avnishs-projects-aee706aa.vercel.app/"
     ],
     credentials: true,
 }));
