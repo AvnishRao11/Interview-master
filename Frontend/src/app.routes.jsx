@@ -18,9 +18,5 @@ export const router=createBrowserRouter([
     },{
         path:"/interview/:id",
         element:<Protected><Interview/></Protected>
-    },{
-        path:"/logout",
-        element:<Protected><button>Logout</button></Protected>
-    }
-
+    },
 ])

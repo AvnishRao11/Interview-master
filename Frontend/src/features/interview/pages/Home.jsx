@@ -3,8 +3,10 @@ import "../style/home.scss"
 import { useState, useRef } from 'react'
 import { useInterview } from '../hooks/useInterview'
 import { useNavigate } from 'react-router'
+import { useAuth } from '../../auth/hooks/useAuth'
 const Home = () => {    
    const { loading, generateReport,Reports} = useInterview()
+   const { handleLogout } = useAuth()
    const navigate = useNavigate()
     const [ jobDescription, setJobDescription ] = useState("")
     const [ selfDescription, setSelfDescription ] = useState("")
@@ -16,6 +18,14 @@ const Home = () => {
         const data=await generateReport({ jobDescription, selfDescription, resumeFile })
         navigate(`/interview/${data.interviewReport._id}`)
     }
+    const onLogout = async () => {
+        try {
+            await handleLogout();
+            navigate("/login", { replace: true });
+        } catch (error) {
+            console.log(error);
+        }
+    };
     if(loading){
         return (
             <main>Loading your interview plan ...</main>
@@ -23,12 +33,27 @@ const Home = () => {
     }
     return (
         <div className='home-page'>
+             <button
+            className='logout-btn'
+            onClick={onLogout}
+        >
+            Logout
+        </button>
 
             {/* Page Header */}
             <header className='page-header'>
-                <h1>Create Your Custom <span className='highlight'>Interview Plan</span></h1>
-                <p>Let our AI analyze the job requirements and your unique profile to build a winning strategy.</p>
-            </header>
+    <div className='header-top'>
+        <div>
+            <h1>
+                Create Your Custom <span className='highlight'>Interview Plan</span>
+            </h1>
+            <p>
+                Let our AI analyze the job requirements and your unique profile
+                to build a winning strategy.
+            </p>
+        </div>
+        </  div>
+        </header>
 
             {/* Main Card */}
             <div className='interview-card'>
